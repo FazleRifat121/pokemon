@@ -1,7 +1,10 @@
-import React from "react";
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router";
+import Layout from "../Layout/Layout";
 
-const router = () => {
-  return <div></div>;
-};
-
-export default router;
+export const router = createBrowserRouter(
+  createRoutesFromElements(<Route path="/" element={<Layout />}></Route>)
+);
