@@ -4,7 +4,7 @@ import Footer from "../shared/footer/Footer";
 
 const Layout = () => {
   return (
-    <div className="text-red-500">
+    <div>
       <Navbar></Navbar>
       <Outlet />
       <Footer></Footer>
