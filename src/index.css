@@ -1,5 +1,11 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+@theme {
+  --color-ground: #e57535;
+  --color-rock: #ab9251;
+  --color-flying: #a1bce7;
+}
 @plugin "daisyui" {
   themes: light --default, black --prefersdark;
 }

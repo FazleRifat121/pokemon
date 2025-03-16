@@ -10,7 +10,6 @@ const CardDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
-  console.log(pokemon);
   useEffect(() => {
     const fetchPokemonDetails = async () => {
       try {
@@ -37,9 +36,9 @@ const CardDetails = () => {
 
   return (
     <div>
-      <div className="max-w-4xl mx-auto p-4 h-[100dvh]">
+      <div className="lg:max-w-4xl max-w-full h-screen  mx-auto p-4 ">
         <BackButton></BackButton>
-        <div className="card lg:card-side bg-base-100 shadow-xl">
+        <div className="card md:card-side bg-base-100 shadow-xl">
           <figure className="px-10 pt-10">
             <img
               src={
@@ -65,7 +64,87 @@ const CardDetails = () => {
               </div>
               <div>
                 <h2 className="font-bold">Types</h2>
-                <p>{pokemon.types.map((t) => t.type.name).join(", ")}</p>
+                <div>
+                  {pokemon.types.map((t, index) => (
+                    <div className="py-1 capitalize" key={index}>
+                      {t.type.name === "grass" ? (
+                        <p className="badge badge-success text-white">
+                          {t.type.name}
+                        </p>
+                      ) : t.type.name === "fire" ? (
+                        <p className="badge badge-warning text-white">
+                          {t.type.name}
+                        </p>
+                      ) : t.type.name === "dark" ? (
+                        <p className="badge badge-neutral text-white">
+                          {t.type.name}
+                        </p>
+                      ) : t.type.name === "water" ? (
+                        <p className="badge badge-info text-white">
+                          {t.type.name}
+                        </p>
+                      ) : t.type.name === "poison" ? (
+                        <p className="badge badge-primary text-white">
+                          {t.type.name}
+                        </p>
+                      ) : t.type.name === "ice" ? (
+                        <p className="badge badge-accent text-white">
+                          {t.type.name}
+                        </p>
+                      ) : t.type.name === "fairy" ? (
+                        <p className="badge badge-secondary text-white">
+                          {t.type.name}
+                        </p>
+                      ) : t.type.name === "ground" ? (
+                        <p className="badge bg-ground text-white">
+                          {t.type.name}
+                        </p>
+                      ) : t.type.name === "electric" ? (
+                        <p className="badge bg-yellow-400 text-white">
+                          {t.type.name}
+                        </p>
+                      ) : t.type.name === "psychic" ? (
+                        <p className="badge bg-violet-600 text-white">
+                          {t.type.name}
+                        </p>
+                      ) : t.type.name === "fighting" ? (
+                        <p className="badge bg-orange-500 text-white">
+                          {t.type.name}
+                        </p>
+                      ) : t.type.name === "rock" ? (
+                        <p className="badge bg-rock text-white">
+                          {t.type.name}
+                        </p>
+                      ) : t.type.name === "stellar" ? (
+                        <p className="badge bg-gray-300 text-black">
+                          {t.type.name}
+                        </p>
+                      ) : t.type.name === "flying" ? (
+                        <p className="badge bg-flying text-white">
+                          {t.type.name}
+                        </p>
+                      ) : t.type.name === "steel" ? (
+                        <p className="badge bg-gray-600 text-white">
+                          {t.type.name}
+                        </p>
+                      ) : t.type.name === "bug" ? (
+                        <p className="badge bg-green-700 text-white">
+                          {t.type.name}
+                        </p>
+                      ) : t.type.name === "dragon" ? (
+                        <p className="badge bg-amber-200 text-white">
+                          {t.type.name}
+                        </p>
+                      ) : t.type.name === "ghost" ? (
+                        <p className="badge bg-violet-400 text-white">
+                          {t.type.name}
+                        </p>
+                      ) : (
+                        <p>{t.type.name}</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
               <div>
                 <h2 className="font-bold">Abilities</h2>
