@@ -9,8 +9,9 @@ const Cards = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [currentPage, setCurrentPage] = useState(0);
 
-  const API = "https://pokeapi.co/api/v2/pokemon?limit=600";
+  const API = "https://pokeapi.co/api/v2/pokemon?limit=680";
   const fetchData = async () => {
     setIsLoading(true);
     setErrorMessage("");
@@ -23,11 +24,13 @@ const Cards = () => {
         if (!res.ok) {
           throw new Error("Failed to fetch");
         }
+
         const data = await res.json();
         if (data.Response === false) {
           setErrorMessage("Failed to fetch");
           return;
         }
+
         return data;
       });
       const detailedPokemonResponse = await Promise.all(detailedPokemonData);
@@ -47,6 +50,12 @@ const Cards = () => {
   const searchData = pokeData.filter((curPokemon) =>
     curPokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  //pagination
+  const totalPokemon = searchData.length;
+  const pokemonPerPage = 33;
+  const totalPage = Math.ceil(totalPokemon / pokemonPerPage);
+  const startIndex = currentPage * pokemonPerPage;
+  const endIndex = startIndex + pokemonPerPage;
 
   return (
     <div className="mt-5">
@@ -60,11 +69,40 @@ const Cards = () => {
           <h3 className="text-red-500 text-5xl text-center">{errorMessage}</h3>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-4 ">
-            {searchData.slice(0, 24).map((pokemon) => (
+            {searchData.slice(startIndex, endIndex).map((pokemon) => (
               <Card key={pokemon.id} pokemon={pokemon}></Card>
             ))}
           </div>
         )}
+      </div>
+      <div className="pagination flex justify-center items-center p-4 gap-5 overflow-x-scroll w-full">
+        <button
+          className="btn"
+          onClick={() => setCurrentPage((prev) => Math.max(0, prev - 1))}
+        >
+          {"<"}
+        </button>
+
+        {[...Array(totalPage).keys()].map((page) => (
+          <button
+            key={page} // Adding a unique key for each button
+            className={`btn ${
+              page === currentPage ? "btn-primary" : ""
+            } focus:btn-primary`}
+            onClick={() => setCurrentPage(page)}
+          >
+            {page + 1} {/* Displaying pages starting from 1 instead of 0 */}
+          </button>
+        ))}
+
+        <button
+          className="btn"
+          onClick={() =>
+            setCurrentPage((prev) => Math.min(totalPage - 1, prev + 1))
+          }
+        >
+          {">"}
+        </button>
       </div>
     </div>
   );

@@ -87,7 +87,9 @@ const Card = ({ pokemon }) => {
                       {t.type.name}
                     </p>
                   ) : (
-                    <p>{t.type.name}</p>
+                    <p className="badge badge-outline badge-neutra">
+                      {t.type.name}
+                    </p>
                   )}
                 </div>
               ))}
