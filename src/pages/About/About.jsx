@@ -1,7 +1,7 @@
 import img from "../../assets/About/img.png";
 const About = () => {
   return (
-    <div className="h-[100dvh]">
+    <div className="min-h-screen mb-5">
       <div className="flex flex-col-reverse md:flex-row justify-between items-start gap-5 ">
         <div className="texts">
           <div className="first-texts">

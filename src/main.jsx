@@ -7,7 +7,7 @@ import { router } from "./router/router";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 overflow-x-hidden">
       <RouterProvider router={router}></RouterProvider>
     </div>
   </StrictMode>
