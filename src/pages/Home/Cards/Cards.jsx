@@ -10,7 +10,7 @@ const Cards = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const API = "https://pokeapi.co/api/v2/pokemon";
+  const API = "https://pokeapi.co/api/v2/pokemon?limit=600";
   const fetchData = async () => {
     setIsLoading(true);
     setErrorMessage("");
@@ -59,8 +59,8 @@ const Cards = () => {
         ) : errorMessage ? (
           <h3 className="text-red-500 text-5xl text-center">{errorMessage}</h3>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 p-4 ">
-            {searchData.map((pokemon) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-5 p-4 ">
+            {searchData.splice(0, 24).map((pokemon) => (
               <Card key={pokemon.id} pokemon={pokemon}></Card>
             ))}
           </div>
