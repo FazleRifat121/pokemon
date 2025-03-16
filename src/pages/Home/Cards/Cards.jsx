@@ -8,24 +8,33 @@ const Cards = () => {
   const [pokeData, setPokedata] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const API = "https://pokeapi.co/api/v2/pokemon?limit=24";
   const fetchData = async () => {
     setIsLoading(true);
+    setErrorMessage("");
     try {
       const res = await fetch(API);
       const data = await res.json();
 
       const detailedPokemonData = data.results.map(async (curPokemon) => {
         const res = await fetch(curPokemon.url);
+        if (!res.ok) {
+          throw new Error("Failed to fetch");
+        }
         const data = await res.json();
+        if (data.Response === false) {
+          setErrorMessage("Failed to fetch");
+          return;
+        }
         return data;
       });
       const detailedPokemonResponse = await Promise.all(detailedPokemonData);
       setPokedata(detailedPokemonResponse);
       setIsLoading(false);
     } catch (err) {
-      console.log(err);
+      setErrorMessage(`Erro Message: ${err}`);
     } finally {
       setIsLoading(false);
     }
@@ -42,6 +51,8 @@ const Cards = () => {
       <div>
         {isLoading ? (
           <Loading></Loading>
+        ) : errorMessage ? (
+          <h3 className="text-red-500 text-5xl text-center">{errorMessage}</h3>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 p-4 ">
             {pokeData.map((pokemon) => (
