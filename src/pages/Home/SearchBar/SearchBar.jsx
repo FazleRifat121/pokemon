@@ -1,12 +1,14 @@
 import "./searchbar.css";
-const SearchBar = () => {
+const SearchBar = ({ searchTerm, setSearchTerm }) => {
   return (
     <div>
-      <div class="input-container">
+      <div className="input-container">
         <input
-          class="input"
+          className="input"
           name="text"
           type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search the internet..."
         />
       </div>
