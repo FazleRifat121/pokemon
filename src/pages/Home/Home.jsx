@@ -3,7 +3,7 @@ import Cards from "./Cards/Cards";
 
 const Home = () => {
   return (
-    <div>
+    <div className="min-h-screen">
       <Banner></Banner>
       <Cards></Cards>
     </div>

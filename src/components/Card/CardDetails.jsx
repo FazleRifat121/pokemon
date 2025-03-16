@@ -10,6 +10,7 @@ const CardDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
+  console.log(pokemon);
   useEffect(() => {
     const fetchPokemonDetails = async () => {
       try {
@@ -69,6 +70,45 @@ const CardDetails = () => {
               <div>
                 <h2 className="font-bold">Abilities</h2>
                 <p>{pokemon.abilities.map((a) => a.ability.name).join(", ")}</p>
+              </div>
+              <div>
+                <h2 className="font-bold">Stats</h2>
+                <div>
+                  {pokemon.stats.map((a, index) => (
+                    <div className="flex items-center gap-2 " key={index}>
+                      {a.stat.name === "hp" ? (
+                        <h3 className="font-semibold capitalize text-red-500 ">
+                          {a.stat.name}
+                        </h3>
+                      ) : a.stat.name === "attack" ? (
+                        <h3 className="font-semibold capitalize text-[#F3AE77]">
+                          {a.stat.name}
+                        </h3>
+                      ) : a.stat.name === "defense" ? (
+                        <h3 className="font-semibold capitalize text-yellow-400">
+                          {a.stat.name}
+                        </h3>
+                      ) : a.stat.name === "special-attack" ? (
+                        <h3 className="font-semibold capitalize text-blue-400">
+                          {a.stat.name}
+                        </h3>
+                      ) : a.stat.name === "special-defense" ? (
+                        <h3 className="font-semibold capitalize text-green-400">
+                          {a.stat.name}
+                        </h3>
+                      ) : a.stat.name === "speed" ? (
+                        <h3 className="font-semibold capitalize text-pink-400">
+                          {a.stat.name}
+                        </h3>
+                      ) : (
+                        <h3 className="font-semibold capitalize ">
+                          {a.stat.name}
+                        </h3>
+                      )}
+                      <p>{a.base_stat}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
