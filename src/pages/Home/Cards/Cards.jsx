@@ -11,7 +11,7 @@ const Cards = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
 
-  const API = "https://pokeapi.co/api/v2/pokemon?limit=680";
+  const API = "https://pokeapi.co/api/v2/pokemon?limit=670";
   const fetchData = async () => {
     setIsLoading(true);
     setErrorMessage("");
@@ -52,7 +52,7 @@ const Cards = () => {
   );
   //pagination
   const totalPokemon = searchData.length;
-  const pokemonPerPage = 33;
+  const pokemonPerPage = 51;
   const totalPage = Math.ceil(totalPokemon / pokemonPerPage);
   const startIndex = currentPage * pokemonPerPage;
   const endIndex = startIndex + pokemonPerPage;
@@ -75,7 +75,7 @@ const Cards = () => {
           </div>
         )}
       </div>
-      <div className="pagination flex justify-center items-center p-4 gap-5 overflow-x-scroll w-full">
+      <div className="pagination flex justify-center items-center p-4 ">
         <button
           className="btn"
           onClick={() => setCurrentPage((prev) => Math.max(0, prev - 1))}
@@ -83,17 +83,19 @@ const Cards = () => {
           {"<"}
         </button>
 
-        {[...Array(totalPage).keys()].map((page) => (
-          <button
-            key={page} // Adding a unique key for each button
-            className={`btn ${
-              page === currentPage ? "btn-primary" : ""
-            } focus:btn-primary`}
-            onClick={() => setCurrentPage(page)}
-          >
-            {page + 1} {/* Displaying pages starting from 1 instead of 0 */}
-          </button>
-        ))}
+        <div className="flex justify-center items-center gap-5 overflow-x-scroll md:overflow-x-hidden p-4">
+          {[...Array(totalPage).keys()].map((page) => (
+            <button
+              key={page} // Adding a unique key for each button
+              className={`btn ${
+                page === currentPage ? "btn-primary" : ""
+              } focus:btn-primary`}
+              onClick={() => setCurrentPage(page)}
+            >
+              {page + 1} {/* Displaying pages starting from 1 instead of 0 */}
+            </button>
+          ))}
+        </div>
 
         <button
           className="btn"
