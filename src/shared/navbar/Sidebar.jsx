@@ -5,7 +5,7 @@ import { ImBriefcase } from "react-icons/im";
 import { MdClose } from "react-icons/md";
 const Sidebar = () => {
   return (
-    <div>
+    <div className="z-10">
       <div className="drawer">
         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
