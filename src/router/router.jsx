@@ -7,6 +7,7 @@ import Layout from "../Layout/Layout";
 import Home from "../pages/Home/Home";
 import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
+import CardDetails from "../components/Card/CardDetails";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -14,6 +15,7 @@ export const router = createBrowserRouter(
       <Route path="/" element={<Home></Home>} />
       <Route path="/about" element={<About></About>} />
       <Route path="/contact" element={<Contact></Contact>} />
+      <Route path="/pokemon/:id" element={<CardDetails />} />
     </Route>
   )
 );

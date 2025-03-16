@@ -60,7 +60,7 @@ const Cards = () => {
           <h3 className="text-red-500 text-5xl text-center">{errorMessage}</h3>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-4 ">
-            {searchData.splice(0, 24).map((pokemon) => (
+            {searchData.slice(0, 24).map((pokemon) => (
               <Card key={pokemon.id} pokemon={pokemon}></Card>
             ))}
           </div>
