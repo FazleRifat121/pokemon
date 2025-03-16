@@ -16,6 +16,7 @@ const Banner = () => {
         showArrows={false}
         showStatus={false}
         showThumbs={false}
+        showIndicators={false}
       >
         <div>
           <img src={img1} />
