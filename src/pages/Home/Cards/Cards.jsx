@@ -10,7 +10,7 @@ const Cards = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const API = "https://pokeapi.co/api/v2/pokemon?limit=24";
+  const API = "https://pokeapi.co/api/v2/pokemon";
   const fetchData = async () => {
     setIsLoading(true);
     setErrorMessage("");
@@ -43,6 +43,11 @@ const Cards = () => {
     fetchData();
   }, []);
 
+  //   search
+  const searchData = pokeData.filter((curPokemon) =>
+    curPokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="mt-5">
       <div className="flex justify-center items-center p-4">
@@ -55,7 +60,7 @@ const Cards = () => {
           <h3 className="text-red-500 text-5xl text-center">{errorMessage}</h3>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 p-4 ">
-            {pokeData.map((pokemon) => (
+            {searchData.map((pokemon) => (
               <Card key={pokemon.id} pokemon={pokemon}></Card>
             ))}
           </div>

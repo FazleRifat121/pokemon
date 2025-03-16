@@ -9,7 +9,7 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search the internet..."
+          placeholder="Search the Pokemon..."
         />
       </div>
     </div>
