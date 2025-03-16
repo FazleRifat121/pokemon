@@ -3,6 +3,7 @@ import { MdHomeFilled } from "react-icons/md";
 import { FaAddressBook } from "react-icons/fa";
 import { ImBriefcase } from "react-icons/im";
 import { MdClose } from "react-icons/md";
+import "./sidebar.css";
 const Sidebar = () => {
   return (
     <div className="z-10">
@@ -62,7 +63,7 @@ const Sidebar = () => {
             </li>
 
             <label htmlFor="my-drawer">
-              <div className="btn mt-10 md:hidden sm:flex drawer-button text-lg w-20 font-bold">
+              <div className="btn mt-10 hidden show-on-mobile drawer-button text-lg w-20 font-bold">
                 <MdClose />
               </div>
             </label>

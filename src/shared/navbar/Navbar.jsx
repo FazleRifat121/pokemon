@@ -1,4 +1,4 @@
-import Sidebar from "./Sidebar";
+import Sidebar from "./sidebar/Sidebar";
 import img from "../../assets/logo.png";
 import ThemeButton from "../../components/ThemeButton/ThemeButton";
 const Navbar = () => {
