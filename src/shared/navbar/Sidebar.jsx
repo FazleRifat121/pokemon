@@ -1,3 +1,8 @@
+import { NavLink } from "react-router";
+import { MdHomeFilled } from "react-icons/md";
+import { FaAddressBook } from "react-icons/fa";
+import { ImBriefcase } from "react-icons/im";
+import { MdClose } from "react-icons/md";
 const Sidebar = () => {
   return (
     <div>
@@ -35,14 +40,32 @@ const Sidebar = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+          <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4 space-y-3">
             {/* Sidebar content here */}
-            <li>
-              <a>Sidebar Item 1</a>
+            <li className="text-lg font-semibold">
+              <NavLink to="/">
+                <MdHomeFilled />
+                Home
+              </NavLink>
             </li>
-            <li>
-              <a>Sidebar Item 2</a>
+            <li className="text-lg font-semibold">
+              <NavLink to="/about">
+                <ImBriefcase />
+                About
+              </NavLink>
             </li>
+            <li className="text-lg font-semibold">
+              <NavLink to="/contact">
+                <FaAddressBook />
+                Contact
+              </NavLink>
+            </li>
+
+            <label htmlFor="my-drawer">
+              <div className="btn mt-10 md:hidden sm:flex drawer-button text-lg w-20 font-bold">
+                <MdClose />
+              </div>
+            </label>
           </ul>
         </div>
       </div>
