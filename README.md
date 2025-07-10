@@ -28,7 +28,7 @@ A fun, interactive Pokémon-themed web experience built for fans and curious min
 - HTML5  
 - CSS3 / Tailwind CSS *(if used)*  
 - JavaScript (ES6+)  
-- Optional: GSAP / AOS / Fetch API  
+- Optional:AOS / Fetch API  
 - Hosted via **Netlify**
 
 ---
